@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://user-assets.sxlcdn.com/images/1209238/FlWuslNmGTHt1EipxUtq2GI6zqnN.png?imageMogr2/strip/auto-orient/thumbnail/1200x9000%3E/quality/90!/format/png" type="image/png">
+  <title>工具大全</title>
+  <style>
+    /* Light mode styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin: 40px 20px 10px 20px;
+      color: #2c3e50;
+      text-align: center;
+      position: relative;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #7f8c8d;
+      margin: 20px 20px 40px 20px;
+      text-align: center;
+    }
+
+    .time {
+      font-size: 1.4rem;
+      color: #16a085;
+      margin-top: 20px;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+      width: 100%;
+    }
+
+    #search-input {
+      width: 250px;
+      padding: 10px;
+      font-size: 1.1rem;
+      border: 2px solid #3498db;
+      border-radius: 8px;
+      margin-right: 10px;
+      outline: none;
+    }
+
+    #search-button {
+      padding: 10px 20px;
+      font-size: 1.1rem;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #search-button:hover {
+      background-color: #2980b9;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      width: 100%;
+      max-width: 700px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    li {
+      background: #ecf0f1;
+      border: 1px solid #bdc3c7;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+      font-size: 1.1rem;
+      position: relative;
+    }
+
+    li:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    a {
+      text-decoration: none;
+      color: #2980b9;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #e74c3c;
+    }
+
+    /* Badge styles and pulse animation */
+    .badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background-color: #e74c3c;
+      color: #fff;
+      padding: 4px 8px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      border-radius: 12px;
+      animation: badgePulse 1.5s infinite ease-in-out;
+    }
+
+    @keyframes badgePulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(231, 76, 60, 0.8);
+      }
+      50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(231, 76, 60, 0.8);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(231, 76, 60, 0.8);
+      }
+    }
+
+    footer {
+      margin-top: auto;
+      width: 100%;
+      background-color: #34495e;
+      color: #fff;
+      text-align: center;
+      padding: 30px 0;
+      font-family: 'Arial', sans-serif;
+      position: relative;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+      animation: glowText 1.5s ease-in-out infinite alternate;
+    }
+
+    footer p span {
+      color: #ffeb3b;
+    }
+
+    footer a {
+      color: #ffeb3b;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 8px;
+      transition: color 0.3s, transform 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: scale(1.2);
+    }
+
+    @keyframes glowText {
+      0% {
+        text-shadow: 0 0 5px #ffeb3b, 0 0 10px #ffeb3b, 0 0 20px #ffeb3b;
+      }
+      100% {
+        text-shadow: 0 0 5px #f39c12, 0 0 10px #f39c12, 0 0 20px #f39c12;
+      }
+    }
+
+    /* Dark Mode styles */
+    body.dark-mode {
+      background: #2c3e50;
+      color: #ecf0f1;
+    }
+
+    .dark-mode h1 {
+      color: #ecf0f1;
+    }
+
+    .dark-mode .subtitle {
+      color: #bdc3c7;
+    }
+
+    .dark-mode .time {
+      color: #1abc9c;
+    }
+
+    .dark-mode #search-input {
+      background: #34495e;
+      border: 2px solid #1abc9c;
+      color: #ecf0f1;
+    }
+
+    .dark-mode #search-button {
+      background-color: #f0e6d2; /* 米白色 */
+      color: #333; /* 深色文字 */
+    }
+
+    /* 将 li 的背景色由粉色改为米白色 */
+    .dark-mode ul li {
+      background: #f0e6d2; /* 米白色 */
+      border: 1px solid #7f8c8d;
+    }
+
+    .dark-mode footer {
+      background-color: #1a252f;
+    }
+
+    .dark-mode footer p {
+      color: #bdc3c7;
+    }
+
+    .dark-mode footer a {
+      color: #1abc9c;
+    }
+
+    /* Dark Mode Toggle Button Styles */
+    #dark-mode-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 30px;
+      height: 30px;
+      background-color: black;  /* 亮色模式下为黑色 */
+      color: white;             /* 亮色模式下文字为白色 */
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    body.dark-mode #dark-mode-toggle {
+      background-color: white;  /* 暗色模式下为白色 */
+      color: black;             /* 暗色模式下文字为黑色 */
+    }
+
+    #dark-mode-toggle.switching {
+      animation: bounce 0.5s ease-in-out;
+    }
+
+    @keyframes bounce {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* 庆祝弹窗样式 */
+    .celebration-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s ease;
+    }
+
+    .celebration-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .celebration-content {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transform: scale(0.7);
+      transition: transform 0.5s ease;
+      animation: glow 2s infinite alternate;
+    }
+
+    .celebration-modal.active .celebration-content {
+      transform: scale(1);
+    }
+
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      }
+      to {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+      }
+    }
+
+    .celebration-title {
+      font-size: 2.5rem;
+      color: #e74c3c;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .celebration-message {
+      font-size: 1.2rem;
+      color: #2c3e50;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .celebration-highlight {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+
+    .celebration-confetti {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #f00;
+      opacity: 0;
+      animation: confetti-fall 5s linear forwards;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .close-celebration {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      color: #7f8c8d;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .close-celebration:hover {
+      color: #e74c3c;
+    }
+
+    .dont-show-again {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #7f8c8d;
+    }
+
+    .dont-show-again input {
+      margin-right: 8px;
+    }
+
+    .celebration-button {
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .celebration-button:hover {
+      background-color: #c0392b;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 暗色模式下的庆祝弹窗 */
+    .dark-mode .celebration-content {
+      background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+    }
+
+    .dark-mode .celebration-title {
+      color: #f0e6d2;
+    }
+
+    .dark-mode .celebration-message {
+      color: #ecf0f1;
+    }
+
+    .dark-mode .celebration-highlight {
+      color: #f0e6d2;
+    }
+
+    .dark-mode .close-celebration {
+      color: #bdc3c7;
+    }
+
+    .dark-mode .celebration-button {
+      background-color: #1abc9c;
+    }
+
+    .dark-mode .celebration-button:hover {
+      background-color: #16a085;
+    }
+  </style>
+</head>
+<body>
+  <!-- 庆祝弹窗 -->
+  <div class="celebration-modal" id="celebrationModal">
+    <div class="celebration-content">
+      <span class="close-celebration" id="closeCelebration">&times;</span>
+      <div class="celebration-confetti" id="confettiContainer"></div>
+      <h2 class="celebration-title">🎉 半周年快乐！ 🎉</h2>
+      <p class="celebration-message">
+        亲爱的用户，感谢您一直以来的支持！<br>
+        今天是我们网站成立<span class="celebration-highlight">半周年</span>的特别日子！<br>
+        在这半年里，我们不断努力完善工具，优化体验。<br>
+        未来我们将继续为您提供更多优质服务！
+      </p>
+      <button class="celebration-button" id="celebrateButton">我已知晓</button>
+      <div class="dont-show-again">
+        <input type="checkbox" id="dontShowAgain">
+        <label for="dontShowAgain">不再显示此消息</label>
+      </div>
+    </div>
+  </div>
+
+  <h1>欢迎来到"工具大全"导航页</h1>
+  <p class="subtitle">目前我们正在不断完善工具，感谢您的耐心等待！</p>
+  <div class="time" id="current-time"></div>
+
+  <!-- Dark Mode Toggle Button -->
+  <button id="dark-mode-toggle">夜</button>
+
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="搜索工具..." oninput="searchTools()" />
+    <button id="search-button">搜索</button>
+  </div>
+
+  <ul id="tools-list">
+		<li><a href="https://lin-zikang.github.io/useful-tools-top%E6%95%B0%E5%AD%97%E5%8D%8E%E5%AE%B9%E9%81%93">数字华容道</a>
+		<li><a href="https://lin-zikang.github.io/useful-tools-top%E5%8D%95%E4%BD%8D%E8%BD%AC%E6%8D%A2">单位转换器</a>
+		<li><a href="https://lin-zikang.github.io/useful-tools-top%E8%AE%A1%E7%AE%97%E5%99%A8">计算器</a>
+		<li><a href="https://lin-zikang.github.io/useful-tools-top%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3">质因数分解器</a>
+		<li><a href="https://lin-zikang.github.io/useful-tools-top%E6%96%87%E6%9C%AC%E6%9B%BF%E6%8D%A2">文本替换器</a>
+		<li><a href="https://lin-zikang.github.io/useful-tools-top%E6%97%A5%E5%8E%86">日历（简易版）</a>
+		<li><a href="https://lin-zikang.github.io/useful-tools-topIDE">在线IDE</a>
+		<li><a href="https://lin-zikang.github.io/useful-tools-top%E8%B4%A8%E6%95%B0%E5%88%A4%E5%AE%9A">质数判定器</a>
+		<li><a href="https://lin-zikang.github.io/useful-tools-top%E5%8A%A0%E6%9D%83%E5%B9%B3%E5%9D%87%E5%80%BC%E8%AE%A1%E7%AE%97">加权平均值计算器</a>
+		<li><a href="https://lin-zikang.github.io/useful-tools-top%E5%BC%80%E5%BF%83%E6%B6%88%E6%B6%88%E4%B9%90">开心消消乐</a>
+        <li>
+            <a href="/%E5%9B%B4%E6%A3%8B">围棋游戏</a>
+            <span class="badge">测试中</span>
+        </li>
+		<li><a href="https://lin-zikang.github.io/useful-tools-top%E6%95%B0%E7%8B%AC">数独练习</a>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top24%E7%82%B9%E8%A7%A3%E6%B3%95%E8%AE%A1%E7%AE%97%E5%99%A8">24点解法计算器</a>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E7%94%BB%E6%9D%BF">画板【自由绘图器】</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E8%B7%91%E5%88%86%E6%9C%BA">综合性能跑分器</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-topBase64%E8%BD%AC%E5%9B%BE%E7%89%87">Base64转图片</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E5%9B%BE%E7%89%87%E8%BD%ACBase64">图片转Base64</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-topBMI%E6%8C%87%E6%95%B0">BMI指数计算器</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E6%95%B0%E5%AD%A6%E7%AC%A6%E5%8F%B7%E5%A4%A7%E5%85%A8">数学符号大全</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E9%80%9F%E7%AE%97">速算练习器</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E9%9A%8F%E6%9C%BA%E6%95%B0">随机数生成器</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-topMarkdown%E9%A2%84%E8%A7%88">Markdown预览器</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E8%AE%A1%E6%97%B6%E5%99%A8">计时器</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E5%99%A8">进制转换工具</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E8%B4%AA%E5%90%83%E8%9B%87">贪吃蛇游戏</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E6%B1%87%E7%8E%87%E8%BD%AC%E6%8D%A2%E5%99%A8">汇率转换器</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E8%BA%AB%E9%AB%98%E8%AE%A1%E7%AE%97%E5%99%A8">身高预测器</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E6%89%AB%E9%9B%B7%E6%B8%B8%E6%88%8F">扫雷游戏</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E5%8F%8D%E5%BA%94%E9%80%9F%E5%BA%A6%E6%B5%8B%E8%AF%95">反应速度测试器</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E6%89%8B%E9%80%9F%E6%B5%8B%E8%AF%95">手速测试器</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E7%A0%B8%E9%87%91%E8%9B%8B">砸金蛋</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E8%A7%A3%E6%96%B9%E7%A8%8B">解方程器</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E5%B1%8F%E5%B9%95%E5%BD%95%E5%88%B6">屏幕录制【电脑版】</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E4%BA%94%E5%AD%90%E6%A3%8B">五子棋游戏</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E6%B8%90%E5%8F%98%E8%89%B2">渐变色调节工具</a></li>
+        <li><a href="https://lin-zikang.github.io/useful-tools-top%E9%A2%9C%E8%89%B2%E9%85%8D%E7%BD%AE%E5%99%A8">颜色配置器</a></li>
+    </ul>
+
+  <footer>
+    <p>© <span>零(LZK)</span> 版权所有 2025</p>
+    <a href="mailto:useful-tools_service@outlook.com">联系邮箱：useful-tools_service@outlook.com</a>
+  </footer>
+
+  <script>
+    function getDayOfWeek() {
+      const days = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+      const today = new Date();
+      return days[today.getDay()];
+    }
+
+    function updateTime() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth() + 1;
+      const date = now.getDate();
+      const dayOfWeek = getDayOfWeek();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      const timeString = `${year}年${month}月${date}日 ${dayOfWeek} ${hours}:${minutes}:${seconds}`;
+      
+      document.getElementById('current-time').innerText = timeString;
+    }
+
+    function searchTools() {
+      const searchInput = document.getElementById('search-input').value.toLowerCase();
+      const listItems = document.querySelectorAll('#tools-list li');
+      
+      listItems.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(searchInput)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Dark mode toggle logic with added effect
+    document.getElementById('dark-mode-toggle').addEventListener('click', () => {
+      const button = document.getElementById('dark-mode-toggle');
+      
+      // Add "switching" animation effect to the button
+      button.classList.add('switching');
+      
+      // Remove the effect after animation completes
+      setTimeout(() => {
+        button.classList.remove('switching');
+      }, 500); // duration of the animation
+      
+      // Toggle dark mode
+      document.body.classList.toggle('dark-mode');
+      
+      // Update button text based on current mode
+      if (document.body.classList.contains('dark-mode')) {
+        button.innerText = '日';
+      } else {
+        button.innerText = '夜';
+      }
+      
+      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    });
+
+    // Load dark mode preference from local storage
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+      document.getElementById('dark-mode-toggle').innerText = '日';
+    } else {
+      document.getElementById('dark-mode-toggle').innerText = '夜';
+    }
+
+    // 庆祝弹窗逻辑
+    function showCelebrationModal() {
+      // 检查用户是否选择不再显示
+      if (localStorage.getItem('dontShowCelebration') === 'true') {
+        return;
+      }
+      
+      const modal = document.getElementById('celebrationModal');
+      modal.classList.add('active');
+      
+      // 创建彩色纸屑效果
+      createConfetti();
+    }
+
+    function createConfetti() {
+      const colors = ['#e74c3c', '#3498db', '#2ecc71', '#f1c40f', '#9b59b6', '#1abc9c', '#e67e22'];
+      const container = document.getElementById('confettiContainer');
+      
+      // 清除现有的彩色纸屑
+      container.innerHTML = '';
+      
+      // 创建50个彩色纸屑
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        
+        // 随机位置
+        const left = Math.random() * 100;
+        
+        // 随机颜色
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        
+        // 随机大小
+        const size = Math.random() * 10 + 5;
+        
+        // 随机形状
+        const isCircle = Math.random() > 0.5;
+        
+        // 随机延迟
+        const delay = Math.random() * 3;
+        
+        // 随机持续时间
+        const duration = Math.random() * 3 + 2;
+        
+        confetti.style.left = `${left}%`;
+        confetti.style.backgroundColor = color;
+        confetti.style.width = `${size}px`;
+        confetti.style.height = `${size}px`;
+        confetti.style.borderRadius = isCircle ? '50%' : '0';
+        confetti.style.animationDelay = `${delay}s`;
+        confetti.style.animationDuration = `${duration}s`;
+        
+        container.appendChild(confetti);
+      }
+    }
+
+    function closeCelebrationModal() {
+      const modal = document.getElementById('celebrationModal');
+      modal.classList.remove('active');
+      
+      // 检查用户是否选择不再显示
+      const dontShowAgain = document.getElementById('dontShowAgain').checked;
+      if (dontShowAgain) {
+        localStorage.setItem('dontShowCelebration', 'true');
+      }
+    }
+
+    // 添加事件监听器
+    document.getElementById('closeCelebration').addEventListener('click', closeCelebrationModal);
+    document.getElementById('celebrateButton').addEventListener('click', () => {
+      closeCelebrationModal();
+    });
+
+    // 页面加载后显示庆祝弹窗
+    window.addEventListener('load', () => {
+      setTimeout(showCelebrationModal, 1000); // 延迟1秒显示
+    });
+
+    setInterval(updateTime, 1000);
+    updateTime();
+  </script>
+</body>
+</html>
